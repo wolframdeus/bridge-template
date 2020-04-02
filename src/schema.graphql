@@ -1,0 +1,22 @@
+type User {
+  "User id"
+  id: ID!
+  "Full user name"
+  name: String!
+}
+
+type Query {
+  "Returns current user information"
+  user: User
+}
+
+type Mutation {
+  "Registers user"
+  register: Boolean!
+}
+
+
+type Subscription {
+  "Subscribes for current user information updates"
+  user: User
+}

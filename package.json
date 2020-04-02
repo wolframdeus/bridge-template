@@ -1,0 +1,16 @@
+{
+  "name": "bridge-template",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:wolframdeus/bridge-template.git",
+  "author": "wolframdeus <wolfram.deus@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "rimraf dist && gql-types-generator --operations src/operations/*.graphql --operations-wrap --operations-selection-separate --output-directory dist src/schema.graphql",
+    "release": "yarn build && git add -A && git commit -m \"Release\" && git push"
+  },
+  "devDependencies": {
+    "gql-types-generator": "^1.4.10",
+    "rimraf": "^3.0.2"
+  }
+}

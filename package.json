@@ -1,16 +1,65 @@
 {
-  "name": "bridge-template",
+  "name": "graphql-bridge-template",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:wolframdeus/bridge-template.git",
   "author": "wolframdeus <wolfram.deus@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "rimraf dist && gql-types-generator --operations src/operations/*.graphql --operations-wrap --operations-selection-separate --output-directory dist src/schema.graphql",
-    "release": "yarn build && git add -A && git commit -m \"Release\" && git push"
+    "lint": "graphql-schema-linter",
+    "validate": "npm-run-all lint",
+    "commit": "git-cz",
+    "release": "standard-version -a",
+    "release:tags": "git push --follow-tags origin master",
+    "release:github": "dotenv -e .env -- conventional-github-releaser -p eslint",
+    "postrelease": "npm-run-all release:*"
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@typescript-eslint/eslint-plugin": "^2.32.0",
+    "@typescript-eslint/parser": "^2.32.0",
+    "commitizen": "^4.1.2",
+    "conventional-github-releaser": "^3.1.3",
+    "cz-conventional-changelog": "^3.2.0",
     "gql-types-generator": "^1.4.10",
-    "rimraf": "^3.0.2"
+    "graphql-schema-linter": "^0.4.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.2",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "standard-version": "^8.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-push": "yarn test"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.graphql": [
+      "graphql-schema-linter"
+    ]
+  },
+  "graphql-schema-linter": {
+    "rules": [
+      "defined-types-are-used",
+      "descriptions-are-capitalized",
+      "enum-values-all-caps",
+      "fields-are-camel-cased",
+      "fields-have-descriptions",
+      "input-object-values-are-camel-cased",
+      "input-object-values-have-descriptions",
+      "types-are-capitalized"
+    ],
+    "schemaPaths": [
+      "src/**/*.graphql"
+    ]
   }
 }

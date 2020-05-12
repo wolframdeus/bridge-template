@@ -1,6 +1,0 @@
-subscription userChanges {
-  user {
-    id
-    name
-  }
-}

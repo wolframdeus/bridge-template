@@ -1,3 +1,4 @@
+"Project common user"
 type User {
   "User id"
   id: ID!
@@ -8,6 +9,11 @@ type User {
 type Query {
   "Returns current user information"
   user: User
+  "Returns user by specified user id"
+  userById(
+    "Used unique identifier"
+    userId: ID!
+  ): User!
 }
 
 type Mutation {

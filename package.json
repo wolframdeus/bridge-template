@@ -1,6 +1,6 @@
 {
   "name": "graphql-bridge-template",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "index.js",
   "repository": "git@github.com:wolframdeus/bridge-template.git",
   "author": "wolframdeus <wolfram.deus@gmail.com>",

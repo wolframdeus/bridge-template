@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.4](https://github.com/wolframdeus/bridge-template/compare/v1.0.3...v1.0.4) (2020-05-13)
+
+
+### Bug Fixes
+
+* **.env:** removed .env file ([39d8020](https://github.com/wolframdeus/bridge-template/commit/39d8020e2e898b258965166be09d41758f91041c))
+
 ### [1.0.3](https://github.com/wolframdeus/bridge-template/compare/v1.0.2...v1.0.3) (2020-05-12)
 
 ### [1.0.2](https://github.com/wolframdeus/bridge-template/compare/v1.0.1...v1.0.2) (2020-05-12)

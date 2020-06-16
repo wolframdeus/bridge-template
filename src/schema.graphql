@@ -2,6 +2,8 @@
 type User {
   "User id"
   id: ID!
+  "VKontakte unique identifier"
+  vkUserId: Int!
   "Full user name"
   name: String!
 }
@@ -17,8 +19,8 @@ type Query {
 }
 
 type Mutation {
-  "Registers user"
-  register: Boolean!
+  "Registers user. Returns his identifier"
+  register: Int!
 }
 
 
